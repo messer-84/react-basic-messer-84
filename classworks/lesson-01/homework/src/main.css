@@ -1,0 +1,37 @@
+.user-list-holder{
+	position: relative;
+	width: 800px;
+	margin: 0 auto;
+	padding:50px;
+}
+.user-list{
+	margin: 0;
+}
+.panel:nth-child(4){
+	background: #ccc;
+}
+.table{
+	table-layout: fixed;
+}
+img.pull-left{
+	display: block;
+	margin: 0 auto;
+	float: none !important;
+	border-radius: 50%;
+	max-width: 100%;
+}
+
+#add{
+	padding: 0 30px;
+	height: 60px;
+	line-height: 60px;
+	background: #f2f2f2;
+	cursor: pointer;
+	font-family:Arial, sans-serif;
+	color: #000;
+	outline: none;
+	border:1px solid #666;
+}
+#add:hover{
+	background: #c1c1c1;
+}
