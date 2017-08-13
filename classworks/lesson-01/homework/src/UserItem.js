@@ -1,17 +1,16 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
+import Avatar from './Avatar'
+
 const UserItem = props => {
 	return (
 			<div className="panel panel-info">
 				<div className="panel-heading">
-					<h3 className="panel-title">{props.index + 1}. {props.fullName}</h3>
+					<h3 className="panel-title">{props.fullName}</h3>
 				</div>
 				<div className="panel-body">
 					<div className="row">
 						<div>
-							<div className="col-md-3 col-lg-3 ">
-								<img src={props.avatarUrl} className="pull-left" />
-							</div>
+							<Avatar avatarUrl={props.avatarUrl}/>
 							<div className=" col-md-9 col-lg-9">
 								<table className="table table-user-information">
 									<tbody>

@@ -22,11 +22,12 @@ module.exports = {
 				use: ['style-loader', 'css-loader']
 			},
 			{
-				test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
-				loader: 'file-loader',
-				options: {
-					limit: 10000
-				}
+				test: /\.(woff|woff2|eot|ttf)$/i,
+				loader: "file-loader?name=fonts/[name]-[hash].[ext]"
+			},
+			{
+				test: /\.(jpe?g|png|gif|svg)$/i,
+				loader: "file-loader?name=images/[name]-[hash].[ext]"
 			}
 		]
 	},

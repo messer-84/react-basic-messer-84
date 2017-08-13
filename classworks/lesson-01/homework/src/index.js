@@ -1,25 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-import './main.css'
-import UserItem from './UserItem'
-import users from './users'
+import './main.css';
+import UserItem from './UserItem';
+import users  from './users'
+
+let myUsersArray = users;
 
 const mountNode = document.querySelector('.app');
 
 
 const UserList = props => {
-	const users = props.users;
+	const usersArr = props.users;
 
-	const correctBirthdate = (date) => {
-		let newBD = date.split('-');
-		return `${newBD[2]}-${newBD[1]}-${newBD[0]}`;
-	};
+	const correctBirthdate = date =>
+			date.split('-').reverse().join('-');
+
 
 	return (
 			<div className="user-list-holder">
 				<div className="user-list">
-					{users.map((user, index) => {
+					{usersArr.map((user, index) => {
 						return (<UserItem
 								key={index}
 								avatarUrl={user.avatarUrl}
@@ -38,13 +39,18 @@ const UserList = props => {
 
 const addUsers = (e) => {
 	e.preventDefault();
-	const newUsers = users.concat(users);
+	if(myUsersArray.length > 5){
+		myUsersArray = myUsersArray.concat(myUsersArray.slice(-3));
+	}
+	else{
+		myUsersArray = myUsersArray.concat(myUsersArray);
+	}
 
-	ReactDOM.render(<UserList users={newUsers} />, mountNode);
+	ReactDOM.render(<UserList users={myUsersArray} />, mountNode);
 
 };
 
-ReactDOM.render(<UserList users={users} />, mountNode);
+ReactDOM.render(<UserList users={myUsersArray} />, mountNode);
 
 
 
