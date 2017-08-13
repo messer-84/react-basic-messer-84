@@ -40,10 +40,10 @@ const UserList = props => {
 const addUsers = (e) => {
 	e.preventDefault();
 	if(myUsersArray.length > 5){
-		myUsersArray = myUsersArray.concat(myUsersArray.slice(-3));
+		myUsersArray = [...myUsersArray,...myUsersArray.slice(-3)];
 	}
 	else{
-		myUsersArray = myUsersArray.concat(myUsersArray);
+		myUsersArray = [...myUsersArray, ...myUsersArray];
 	}
 
 	ReactDOM.render(<UserList users={myUsersArray} />, mountNode);
