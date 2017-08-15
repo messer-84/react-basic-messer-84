@@ -6,7 +6,7 @@ const users = [
     birthdate: '1976-10-10',
     gender: 'мужской',
     address: 'ул. Звенигороская, 47б',
-    email: 'ivanov@mail.ru'
+    email: 'ivanov@mail.ru',
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ const users = [
     birthdate: '1957-01-14',
     gender: 'мужской',
     address: 'ул.Пушкинская, 13',
-    email: 'ivanov2@mail.ru'
+    email: 'ivanov2@mail.ru',
   },
   {
     id: 3,
@@ -24,8 +24,8 @@ const users = [
     birthdate: '1990-07-03',
     gender: 'женский',
     address: 'ул. Лермонтова, 59',
-    email: 'ivanov3@mail.ru'
-  }
+    email: 'ivanov3@mail.ru',
+  },
 ];
 
 export default users;
