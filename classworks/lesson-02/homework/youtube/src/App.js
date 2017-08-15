@@ -1,68 +1,45 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import YTSearch from 'youtube-api-search';
+import SearchComp from './SearchComp';
+import MainVideoComp from './MainVideoComp';
+import VideoListComp from './VideoListComp';
 
 import './App.css';
+const API_KEY = `AIzaSyC1ORL6Y3zxvLLev6QHUqP8eF1hFbYo1WI`;
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      mainVideoId: '',
+      videoData: [],
+    };
+
+    YTSearch({ key: API_KEY, term: 'matrix' }, data => {
+      this.setState({
+        mainVideoId: data[0].id.videoId,
+        mainVideoTitle: data[0].snippet.title,
+        mainVideoDesc: data[0].snippet.description,
+        videoData: data.slice(1),
+      });
+    });
+  }
   render() {
+    // console.log(this.state.videoData);
+
     return (
       <main className="container">
-         <div className="search-bar navbar">
-           <input type="text" placeholder="Search" />
-         </div>
-
-         <div className="row">
-           <div className="video-detail col-md-8">
-             <div className="embed-responsive embed-responsive-16by9">
-               <iframe title="random" src="https://www.youtube.com/embed/-Qwxw11-"></iframe>
-             </div>
-
-             <div className="details">
-               <div>TITLE</div>
-               <div>DESCRIPTION</div>
-             </div>
-           </div>
-           <ul className="col-md-4 list-group">
-             <li className="list-group-item">
-               <div className="video-list media">
-                 <div className="video-list media">
-                   <div className="media-left">
-                     <img className="media-object" src="https://randomuser.me/api/portraits/thumb/men/7.jpg" />
-                   </div>
-                 </div>
-                 <div className="media-body">
-                   <div className="media-heading">SOME VIDEO</div>
-                 </div>
-               </div>
-             </li>
-             <li className="list-group-item">
-               <div className="video-list media">
-                 <div className="video-list media">
-                   <div className="media-left">
-                     <img className="media-object" src="https://randomuser.me/api/portraits/thumb/men/7.jpg" />
-                   </div>
-                 </div>
-                 <div className="media-body">
-                   <div className="media-heading">SOME VIDEO</div>
-                 </div>
-               </div>
-             </li>
-             <li className="list-group-item">
-               <div className="video-list media">
-                 <div className="video-list media">
-                   <div className="media-left">
-                     <img className="media-object" src="https://randomuser.me/api/portraits/thumb/men/7.jpg" />
-                   </div>
-                 </div>
-                 <div className="media-body">
-                   <div className="media-heading">SOME VIDEO</div>
-                 </div>
-               </div>
-             </li>
-           </ul>
-         </div>
-       </main>
-
+        {/*<div>{this.state.videoData}</div>*/}
+        <SearchComp />
+        <div className="row">
+          <MainVideoComp
+              mainVideoId={this.state.mainVideoId}
+              mainVideoTitle={this.state.mainVideoTitle}
+              mainVideoDesc = {this.state.mainVideoDesc}
+          />
+          <VideoListComp videoData = {this.state.videoData}/>
+        </div>
+      </main>
     );
   }
 }
