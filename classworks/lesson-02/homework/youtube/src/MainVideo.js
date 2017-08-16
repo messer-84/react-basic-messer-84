@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class MainVideoComp extends Component {
+class MainVideo extends Component {
   constructor() {
     super();
   }
@@ -16,10 +16,10 @@ class MainVideoComp extends Component {
         </div>
 
         <div className="details">
-          <div>
+          <h2 className="main-video-title">
             {mainVideoTitle}
-          </div>
-          <div>
+          </h2>
+          <div className="main-video-desc">
             {mainVideoDesc}
           </div>
         </div>
@@ -28,4 +28,4 @@ class MainVideoComp extends Component {
   }
 }
 
-export default MainVideoComp;
+export default MainVideo;

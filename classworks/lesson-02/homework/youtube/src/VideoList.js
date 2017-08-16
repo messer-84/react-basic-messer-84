@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import VideoItemComp from './VideoItemComp';
+import VideoItem from './VideoItem';
 
 class VideoListComp extends Component {
   constructor() {
@@ -7,19 +7,18 @@ class VideoListComp extends Component {
   }
 
   render() {
-    const { videoData } = this.props;
-    console.log('video-data', videoData);
-    console.log(this.props);
-
+    const { videoData, update } = this.props;
     return (
+
       <ul className="col-md-4 list-group">
         {videoData.map((elem, index) => {
-          return <VideoItemComp
+          return <VideoItem
               key={index}
               videoId={elem.id.videoId}
               videoThumb={elem.snippet.thumbnails.default.url}
               videoTitle ={elem.snippet.title}
-              videoDesc ={elem.snippet.description}
+              videoDesc ={elem.snippet.description.slice(0,60)}
+              update = {update}
           />;
         })}
       </ul>
