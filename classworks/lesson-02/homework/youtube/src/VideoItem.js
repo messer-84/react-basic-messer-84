@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 
 class VideoItem extends Component {
-  constructor() {
-    super();
-  }
-
   render() {
-    const url = 'https://www.youtube.com/embed/';
     const {
       videoThumb,
       videoId,

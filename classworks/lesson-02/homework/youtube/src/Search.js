@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 class Search extends Component {
-  constructor() {
-    super();
-  }
-
   render() {
     const { showVideo } = this.props;
 

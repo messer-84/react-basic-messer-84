@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 class MainVideo extends Component {
-  constructor() {
-    super();
-  }
-
   render() {
     const url = 'https://www.youtube.com/embed/';
     const { mainVideoId, mainVideoTitle, mainVideoDesc } = this.props;

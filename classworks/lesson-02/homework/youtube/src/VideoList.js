@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import VideoItem from './VideoItem';
 
 class VideoListComp extends Component {
-  constructor() {
-    super();
-  }
-
   render() {
     const { videoData, update } = this.props;
     return (

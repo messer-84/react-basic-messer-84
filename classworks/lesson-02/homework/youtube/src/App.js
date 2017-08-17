@@ -7,6 +7,7 @@ import VideoList from './VideoList';
 import './App.css';
 const API_KEY = `AIzaSyC1ORL6Y3zxvLLev6QHUqP8eF1hFbYo1WI`;
 
+
 class App extends Component {
   constructor() {
     super();
@@ -18,7 +19,10 @@ class App extends Component {
     this.callAjax = this.debounceFunc(this.callAjax, 500);
     this.showVideo = this.showVideo.bind(this);
 
-    YTSearch({ key: API_KEY, term: 'matrix' }, data => {
+    this.youtubeQuery('matrix');
+  }
+  youtubeQuery(term){
+    YTSearch({ key: API_KEY, term: term }, data => {
       this.setState({
         mainVideoId: data[0].id.videoId,
         mainVideoTitle: data[0].snippet.title,
@@ -29,14 +33,7 @@ class App extends Component {
   }
 
   callAjax(value) {
-    YTSearch({ key: API_KEY, term: value }, data => {
-      this.setState({
-        mainVideoId: data[0].id.videoId,
-        mainVideoTitle: data[0].snippet.title,
-        mainVideoDesc: data[0].snippet.description,
-        videoData: data.slice(1),
-      });
-    });
+    this.youtubeQuery(value);
   }
 
   debounceFunc(callback, wait, context = this) {
