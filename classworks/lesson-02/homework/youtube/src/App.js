@@ -3,8 +3,6 @@ import YTSearch from 'youtube-api-search';
 import Search from './Search';
 import MainVideo from './MainVideo';
 import VideoList from './VideoList';
-import { debounce } from 'throttle-debounce';
-
 
 import './App.css';
 const API_KEY = `AIzaSyC1ORL6Y3zxvLLev6QHUqP8eF1hFbYo1WI`;
@@ -17,7 +15,7 @@ class App extends Component {
       videoData: [],
     };
     this.updateData = this.updateData.bind(this);
-    this.callAjax= debounce(500, this.callAjax);
+    this.callAjax = this.debounceFunc(this.callAjax, 500);
     this.showVideo = this.showVideo.bind(this);
 
     YTSearch({ key: API_KEY, term: 'matrix' }, data => {
@@ -30,7 +28,7 @@ class App extends Component {
     });
   }
 
-  callAjax(value){
+  callAjax(value) {
     YTSearch({ key: API_KEY, term: value }, data => {
       this.setState({
         mainVideoId: data[0].id.videoId,
@@ -40,8 +38,22 @@ class App extends Component {
       });
     });
   }
-  showVideo(e){
-   this.callAjax(e.target.value);
+
+  debounceFunc(callback, wait, context = this) {
+    let timeout = null;
+    let callbackArgs = null;
+
+    const later = () => callback.apply(context, callbackArgs);
+
+    return function() {
+      callbackArgs = arguments;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+
+  showVideo(e) {
+    this.callAjax(e.target.value);
   }
 
   updateData(config) {
