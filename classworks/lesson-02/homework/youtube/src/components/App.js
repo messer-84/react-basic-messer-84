@@ -7,7 +7,6 @@ import VideoList from './VideoList';
 import '../styles/App.css';
 const API_KEY = `AIzaSyC1ORL6Y3zxvLLev6QHUqP8eF1hFbYo1WI`;
 
-
 class App extends Component {
   constructor() {
     super();
@@ -21,7 +20,7 @@ class App extends Component {
 
     this.youtubeQuery('matrix');
   }
-  youtubeQuery(term){
+  youtubeQuery(term) {
     YTSearch({ key: API_KEY, term: term }, data => {
       this.setState({
         mainVideoId: data[0].id.videoId,
