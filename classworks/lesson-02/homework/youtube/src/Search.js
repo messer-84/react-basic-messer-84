@@ -1,19 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Search extends Component {
-  render() {
-    const { showVideo } = this.props;
-
-    return (
-      <div className="search-bar navbar">
-        <input
-          type="text"
-          placeholder="Search"
-          onChange={showVideo}
-        />
-      </div>
-    );
-  }
-}
+const Search = props => {
+  const { showVideo } = props;
+  return (
+    <div className="search-bar navbar">
+      <input
+        type="text"
+        placeholder="Search"
+        onChange={showVideo}
+      />
+    </div>
+  );
+};
 
 export default Search;
