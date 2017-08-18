@@ -4,7 +4,7 @@ import Search from './Search';
 import MainVideo from './MainVideo';
 import VideoList from './VideoList';
 
-import './App.css';
+import '../styles/App.css';
 const API_KEY = `AIzaSyC1ORL6Y3zxvLLev6QHUqP8eF1hFbYo1WI`;
 
 
