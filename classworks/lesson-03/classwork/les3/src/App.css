@@ -1,5 +1,7 @@
 .App {
-  text-align: center;
+  /*text-align: center;*/
+  width: 600px;
+  margin: 0 auto;
 }
 
 .App-logo {
@@ -22,3 +24,13 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.item{
+  padding: 5px;
+}
+.item span{
+
+  padding:5px;
+  border-top:0;
+}
+

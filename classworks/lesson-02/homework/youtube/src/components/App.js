@@ -18,8 +18,13 @@ class App extends Component {
     this.callAjax = this.debounceFunc(this.callAjax, 500);
     this.showVideo = this.showVideo.bind(this);
 
-    this.youtubeQuery('matrix');
   }
+  // в этом методе мы делаем запросы к серверу
+  componentDidMount(){
+    this.youtubeQuery('matrix');
+
+  }
+
   youtubeQuery(term) {
     YTSearch({ key: API_KEY, term: term }, data => {
       this.setState({

@@ -1,18 +1,52 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Github } from './gitQuery';
+// import {Header} from './gitQuery';
+// import {Button} from './gitQuery';
+
+class MyGit extends Component {
+  render() {
+    return <div>Git</div>;
+  }
+}
+
+class Counter extends Component {
+  render() {
+    return <div>Counter</div>;
+  }
+}
+
+class Wrapper extends Component {
+  render() {
+    return <div />;
+  }
+}
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      activeTab: 1,
+    };
+    this.update = this.update.bind(this);
+  }
+
+  update() {
+    // this.setState({ activeIndex: this.props.children });
+    console.log(this.props.children);
+
+  }
+
   render() {
+    // console.log(this);
+
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <button onClick={() => {this.update.bind(this)}}>1</button>
+        <button onClick={() => {this.update.bind(this)}}>2</button>
+        <button onClick={() => {this.update.bind(this)}}>3</button>
+        <Wrapper />
       </div>
     );
   }
