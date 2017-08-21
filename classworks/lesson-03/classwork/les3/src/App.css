@@ -21,16 +21,29 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.item{
+.item {
   padding: 5px;
 }
-.item span{
-
-  padding:5px;
-  border-top:0;
+.item span {
+  padding: 5px;
+  border-top: 0;
 }
 
+.App > button{
+  width: 60px;
+  height: 60px;
+}
+
+button.active {
+  outline: none;
+  border:0;
+  background: skyblue;
+}

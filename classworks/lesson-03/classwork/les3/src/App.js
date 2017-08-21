@@ -37,15 +37,23 @@ class App extends Component {
 		});
   }
   update(e) {
+    let tabId = e.target.id;
+    let allTabs = document.querySelectorAll('button[id]');
+    [...allTabs].forEach(tab => {
+      tab.classList.remove('active');
+    });
+    let activeEl = document.getElementById(tabId);
+
+    activeEl.classList.add('active');
     this.setState({
-      activeTab: e.target.id,
+      activeTab: tabId,
     });
   }
 
   render() {
     return (
       <div className="App">
-        <button
+        <button className="active"
           id="0"
           onClick={e => {
             this.update(e);
