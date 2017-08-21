@@ -1,32 +1,57 @@
 import React, { Component } from 'react';
 import RepoItem from './repoItem';
 
-class Button extends Component {
+const Button = props => {
+  const { increment } = props;
+  console.log(increment);
+  return (
+    <button onClick={increment}>
+      {props.children}
+    </button>
+  );
+};
+
+class Wrapper extends Component {
   constructor() {
     super();
-
   }
 
-  // shouldComponentUpdate(prevState, nextState) {
-  //   return false;
-  // }
   render() {
-    const { counterFunc } = this.props;
-
     return (
-      <button onClick={counterFunc}>Button</button>
+      <div>
+        {this.props.children}
+      </div>
     );
   }
 }
+
 class Header extends Component {
-  // shouldComponentUpdate(prevState, nextState) {
-  //   return false;
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      counter: props.counter,
+    };
+  }
+  componentWillReceiveProps(nextProps) {}
+  shouldComponentUpdate(nextProps, nextState) {
+    // return nextProps.counter % 3 === 0;
+    return true;
+  }
+  componentWillUpdate() {
+    //если shouldComponentUpdate вернул true
+  }
 
   render() {
+    const { increment, counter } = this.props;
+    console.log('counter',counter);
+    
     return (
       <h1>
-        {this.props.counter}
+        <Button increment={increment} counter={counter}>
+          INCREMENT
+        </Button>
+        <br/>
+        Counter: {counter}
       </h1>
     );
   }
@@ -39,6 +64,7 @@ class Github extends Component {
       data: [],
     };
   }
+
   componentDidMount() {
     const url = 'https://api.github.com/users/messer-84/repos';
     fetch(url).then(data =>
@@ -68,4 +94,12 @@ class Github extends Component {
   }
 }
 
-export  {Github, Button, Header};
+const Name = props => {
+  return (
+    <div>
+      My name is {props.name}
+    </div>
+  );
+};
+
+export { Github, Button, Header, Name, Wrapper };
