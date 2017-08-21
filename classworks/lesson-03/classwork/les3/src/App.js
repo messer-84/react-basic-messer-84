@@ -40,11 +40,9 @@ class App extends Component {
     let tabId = e.target.id;
     let allTabs = document.querySelectorAll('button[id]');
     [...allTabs].forEach(tab => {
-      tab.classList.remove('active');
+        tab.className = tab.id === tabId ? 'active' : '';
     });
-    let activeEl = document.getElementById(tabId);
 
-    activeEl.classList.add('active');
     this.setState({
       activeTab: tabId,
     });
