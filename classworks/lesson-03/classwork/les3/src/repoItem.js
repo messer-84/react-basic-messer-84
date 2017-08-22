@@ -4,7 +4,6 @@ import './App.css';
 
 class RepoItem extends Component {
   render() {
-    const { elem } = this.props.children;
     return (
       <li className="item">
           {this.props.children}
