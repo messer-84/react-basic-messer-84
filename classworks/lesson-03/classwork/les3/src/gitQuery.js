@@ -3,7 +3,6 @@ import RepoItem from './repoItem';
 
 const Button = props => {
   const { increment } = props;
-  console.log(increment);
   return (
     <button onClick={increment}>
       {props.children}
@@ -12,10 +11,6 @@ const Button = props => {
 };
 
 class Wrapper extends Component {
-  constructor() {
-    super();
-  }
-
   render() {
     return (
       <div>
@@ -26,28 +21,22 @@ class Wrapper extends Component {
 }
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      counter: props.counter,
-    };
-  }
-  componentWillReceiveProps(nextProps) {}
+  // componentWillReceiveProps(nextProps) {}
   shouldComponentUpdate(nextProps, nextState) {
     // return nextProps.counter % 3 === 0;
     return true;
   }
-  componentWillUpdate() {
-    //если shouldComponentUpdate вернул true
-  }
+  // componentWillUpdate() {
+  //   //если shouldComponentUpdate вернул true
+  // }
 
   render() {
     const { increment, counter } = this.props;
-    console.log('counter',counter);
+    console.log('counter', counter);
     
     return (
       <h1>
-        <Button increment={increment} counter={counter}>
+        <Button increment={increment} >
           INCREMENT
         </Button>
         <br/>

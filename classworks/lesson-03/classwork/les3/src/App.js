@@ -7,9 +7,11 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      activeTab: 1,
+      activeTab: 0,
       counter: 0,
     };
+    this.increment = this.increment.bind(this);
+
     this.tabs = [
       {
         id: 0,
@@ -26,32 +28,30 @@ class App extends Component {
         component: <Name name="Maksim" />,
       },
     ];
-    this.increment = this.increment.bind(this);
   }
 
   increment() {
-    console.log('this', this);
+    this.setState(prevState => {
+      console.log(prevState.counter);
 
-    this.setState(function (prevState) {
-      return {counter: prevState.counter + 1}
-		});
+      return { counter: prevState.counter + 1 };
+    });
   }
   update(e) {
     let tabId = e.target.id;
     let allTabs = document.querySelectorAll('button[id]');
     [...allTabs].forEach(tab => {
-        tab.className = tab.id === tabId ? 'active' : '';
+      tab.className = tab.id === tabId ? 'active' : '';
     });
 
-    this.setState({
-      activeTab: tabId,
-    });
+    this.setState({ activeTab: tabId });
   }
 
   render() {
     return (
       <div className="App">
-        <button className="active"
+        <button
+          className="active"
           id="0"
           onClick={e => {
             this.update(e);
