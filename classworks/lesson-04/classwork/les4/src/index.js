@@ -1,8 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './theme/index.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import registerServiceWorker from './services/registerServiceWorker';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+const render = Component => {
+  ReactDOM.render(
+    <Router>
+    <Component />
+    </Router>,
+    document.getElementById('root')
+  )
+};
+
+if(module.hot){
+  module.hot.accept('./App', () => {
+    render(App)
+  })
+}
+
+render(App);
+
 registerServiceWorker();
