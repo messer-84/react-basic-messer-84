@@ -1,22 +1,32 @@
 import React, { Component } from 'react';
 import './theme/App.css';
-
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
-import Footer from './components/Footer/Footer';
+import Api from './services/api'
 
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      user: 'no auth'
+    };
+
+  }
+  update(config) {
+    this.setState(config);
+  }
+
   render() {
     return (
       <div className="App">
-
-        <Header />
+        <Header user={this.state.user}/>
         <Main />
-        <Footer />
+
       </div>
     );
   }
 }
 
-export default App;
+const app = new App();
+export { App, app};

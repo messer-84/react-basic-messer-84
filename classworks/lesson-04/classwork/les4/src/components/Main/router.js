@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Signin from '../Signin/Signin';
-import Signup from '../Signup/Signup';
-import Signout from '../Signout/Signout';
-import Main from './Main';
+import Signin from '../Auth/Signin';
+import Signup from '../Auth/Signup';
+import Signout from '../Auth/Signout';
+// import Main from './Main';
 
 
 import './Main.css';

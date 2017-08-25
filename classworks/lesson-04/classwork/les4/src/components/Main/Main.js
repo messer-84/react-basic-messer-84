@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import Signin from '../Signin/Signin';
-import Signup from '../Signup/Signup';
-import Signout from '../Signout/Signout';
+import Signin from '../Auth/Signin';
+import Signup from '../Auth/Signup';
+import Signout from '../Auth/Signout';
+import Users from '../Auth/Users';
+
 
 import './Main.css';
 import { Route, Switch } from 'react-router-dom';
@@ -15,8 +17,8 @@ class Main extends Component {
         <Switch>
           <Route path="/signin" component={Signin} />
           <Route path="/signup" component={Signup} />
-          <Route path="/signout" component={Signout} />
-          <Route path="/" component={Signin} />
+          {/*<Route path="/signout" component={Signout} />*/}
+          <Route path="/" />
 
           <Route component={NotFound} />
         </Switch>
