@@ -1,6 +1,43 @@
+*{
+  box-sizing: border-box;
+}
 .App {
   text-align: center;
   grid-template-rows: 20fr 60fr 10fr;
   display: grid;
 }
+.sign-block{
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+}
 
+.form-list{
+  padding: 0;
+}
+
+.form-list li{
+  margin:0 0 20px;
+
+}
+.form-list label{
+  display: block;
+  margin:0 0 10px;
+  text-align: left;
+}
+.form-list input{
+  display: block;
+  padding:5px 10px;
+  width: 300px;
+  border: 1px solid #ccc;
+  height: 40px;
+  font-size: 20px;
+}
+.form-list button{
+  height: 40px;
+  width: 200px;
+  background: #ccc;
+  border: 1px solid #000;
+  cursor: pointer;
+  font-size: 20px;
+}
