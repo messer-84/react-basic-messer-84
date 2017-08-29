@@ -29,7 +29,7 @@ class App extends Component {
       isAuthorized: false,
       userToken: ''
     });
-    localStorage.removeItem('user');
+    localStorage.setItem('user', '');
     localStorage.setItem('isAuthorized', false);
 
   }
