@@ -1,12 +1,31 @@
 import React from 'react';
-import {app} from '../App';
+import App from '../App';
 
 class Api {
   constructor() {
+    this.headers = {
+
+    };
+    this.url = 'http://api.jyotish.gift/api/v1/auth/';
+  }
+  signUpUser(userData){
+    return fetch(this.url + 'signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+    })
+      .then(response => response.json());
+
+
+  }
+  getUser(){
+    return fetch(this.url).then(data=>data.json());
   }
 
-  signin(url, userData) {
-    fetch(url, {
+  signInUser(userData) {
+    return fetch(this.url + 'login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -14,17 +33,7 @@ class Api {
       body: JSON.stringify(userData),
     })
       .then(response => response.json())
-      .then(result => {
-        console.log(result);
-        console.log('success');
-        if (result.status === 'success') {
-          app.update({user: result.message.user.name});
-        }
-      })
-      .catch(error => console.log('Request failed', error));
   }
 }
 
-const api = new Api();
-
-export {Api, api};
+export default new Api();

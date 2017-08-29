@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Api, api } from '../../services/api';
+import Api from '../../services/api';
 
 class Signin extends Component {
   constructor() {
     super();
-    this.url = 'http://api.jyotish.gift/api/v1/auth/login';
+
     this.updateInput = this.updateInput.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {}
@@ -19,21 +18,17 @@ class Signin extends Component {
       [inputName]: inputValue,
     });
   }
-  handleSubmit(e) {
-    e.preventDefault();
-    const url = 'http://api.jyotish.gift/api/v1/auth/login';
-    var userData = {};
-    for (const field in this.refs) {
-      userData[field] = this.refs[field].value;
-    }
-    api.signin(this.url, userData);
-  }
+
 
   render() {
+    const { signIn } = this.props;
     return (
       <div className="sign-block">
         <h1>Sign in</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={(e) => {
+          e.preventDefault();
+          signIn(this.refs);
+        }}>
           <ul className="form-list">
             <li>
               <label htmlFor="name">Name:</label>

@@ -3,42 +3,7 @@ import React, { Component } from 'react';
 class Signup extends Component {
   constructor() {
     super();
-    this.state = {
-      user: '',
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.updateInput = this.updateInput.bind(this);
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    const url = 'http://api.jyotish.gift/api/v1/auth/signup';
-    var userData = {};
-    for (const field in this.refs) {
-      if (field !== 'confirmPassword') {
-        userData[field] = this.refs[field].value;
-      }
-    }
-    //user=maksim84//email=test84@test.com//pass=1234
-    console.log(userData);
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userData),
-    })
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(result) {
-        console.log(result);
-        if (result.status === 'success') {
-        }
-      })
-      .catch(function(error) {
-        console.log('Request failed', error);
-      });
   }
 
   updateInput(e) {
@@ -51,11 +16,20 @@ class Signup extends Component {
   }
 
   render() {
+    const { state, signUp } = this.props;
+
     return (
       <div>
         <h1>Sign Up</h1>
         <div className="sign-block">
-          <form onSubmit={this.handleSubmit}>
+          <form
+            onSubmit={
+              (e) => {
+                e.preventDefault();
+                signUp(this.refs);
+              }
+            }
+          >
             <ul className="form-list">
               <li>
                 <label htmlFor="email">Email:</label>

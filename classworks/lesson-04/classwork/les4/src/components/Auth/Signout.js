@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 
 class Signout extends Component {
   render() {
+    const { signOut } = this.props;
+
     return (
-      <h1>
-       Signout
-      </h1>
+      <div>
+        <h1>Signout</h1>
+        <button onClick={(e) => {
+          e.preventDefault();
+          signOut();
+        }}>Signout</button>
+      </div>
     );
   }
 }

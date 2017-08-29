@@ -3,13 +3,13 @@ class Api {
     this.headers = {
 
     };
-    this.url = 'https://api.random.users/?nat=us.gb&results=50'
+    this.url = 'https://api.randomuser.me/?nat=us.gb&results=50'
   }
-  // getUsers(){
-  //
-  // }
+  getUsers(){
+    return fetch(this.url).then(data=>data.json());
+  }
   // fetch(url, body){
-  //   return fetch(this.url).then(response => response.json())
+  //   return fetch(this.url + url, body).then(response => response.json())
   // }
 }
 
