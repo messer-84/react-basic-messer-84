@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 
 class Header extends Component {
   render() {
-    const { isAuthorizedState } = this.props;
+    const { isAuthorized, user } = this.props;
 
-    const user = localStorage.getItem('user');
+    // const user = localStorage.getItem('user');
 
-    if(isAuthorizedState){
+    if(isAuthorized){
       return (
         <div className="header">
           <Link to="/">Logo</Link>

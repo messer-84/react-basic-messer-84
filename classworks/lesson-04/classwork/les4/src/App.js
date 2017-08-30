@@ -49,6 +49,8 @@ class App extends Component {
     for (const field in formData) {
       userData[field] = formData[field].value;
     }
+    console.log(userData);
+
     Api.signInUser(userData).then(result => {
       console.log(result);
 
