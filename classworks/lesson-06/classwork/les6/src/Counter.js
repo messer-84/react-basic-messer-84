@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { increment, decrement, reset, removeDuplicates } from './actions/index';
+import { increment, decrement  } from './actions/index';
+import { historyUpdate, reset, removeDuplicates} from './actions/history-action';
 
 class Counter extends Component {
   showHistory(history) {
+    console.log(history);
+
     return history.map((num, index) =>
       <li key={index.toString()}>
         {num}
@@ -14,7 +17,15 @@ class Counter extends Component {
 
   render() {
     console.log('props -', this.props);
-    const { counter, increment, decrement, prevCounters, reset, removeDuplicates } = this.props;
+    const {
+      counter,
+      increment,
+      historyUpdate,
+      decrement,
+      prevCounters,
+      reset,
+      removeDuplicates,
+    } = this.props;
     const history = this.showHistory(prevCounters);
 
     return (
@@ -22,8 +33,22 @@ class Counter extends Component {
         <div>
           Counter: <span>{counter}</span>
         </div>
-        <button onClick={increment}>INCREMENT</button>
-        <button onClick={decrement}>DECREMENT</button>
+        <button
+          onClick={() => {
+            increment();
+            historyUpdate();
+          }}
+        >
+          INCREMENT
+        </button>
+        <button
+          onClick={() => {
+            decrement();
+            historyUpdate();
+          }}
+        >
+          DECREMENT
+        </button>
         <button onClick={reset}>Reset</button>
         <button onClick={removeDuplicates}>Remove Duplicates</button>
         <ul>
@@ -37,7 +62,7 @@ class Counter extends Component {
 const mapStateToProps = state => {
   return {
     counter: state.counterReducer.counter,
-    prevCounters: state.counterReducer.prevCounters
+    prevCounters: state.historyReducer.prevCounters,
   };
 };
 
@@ -49,12 +74,15 @@ const mapDispatchToProps = dispatch => {
     decrement() {
       dispatch(decrement());
     },
+    historyUpdate() {
+      dispatch(historyUpdate());
+    },
     reset() {
       dispatch(reset());
     },
-    removeDuplicates(){
+    removeDuplicates() {
       dispatch(removeDuplicates());
-    }
+    },
   };
 };
 
