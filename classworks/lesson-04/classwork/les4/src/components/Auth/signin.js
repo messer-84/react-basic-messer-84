@@ -4,11 +4,8 @@ import Api from '../../services/api';
 class Signin extends Component {
   constructor() {
     super();
-
     this.updateInput = this.updateInput.bind(this);
   }
-
-  componentDidMount() {}
 
   updateInput(e) {
     const inputName = e.target.name;
@@ -18,7 +15,6 @@ class Signin extends Component {
       [inputName]: inputValue,
     });
   }
-
 
   render() {
     const { signIn } = this.props;

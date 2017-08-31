@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { increment, decrement } from './actions/index';
+import { increment, decrement, reset, removeDuplicates } from './actions/index';
 
 class Counter extends Component {
-  showHistory(history){
-
+  showHistory(history) {
+    return history.map((num, index) =>
+      <li key={index.toString()}>
+        {num}
+      </li>,
+    );
   }
+
   render() {
-    console.log(this.props);
-    const {counter, increment, decrement, prevCounters} = this.props;
-    const history = this.showHistory(prevCounters );
+    console.log('props -', this.props);
+    const { counter, increment, decrement, prevCounters, reset, removeDuplicates } = this.props;
+    const history = this.showHistory(prevCounters);
+
     return (
       <div>
         <div>
@@ -18,7 +24,11 @@ class Counter extends Component {
         </div>
         <button onClick={increment}>INCREMENT</button>
         <button onClick={decrement}>DECREMENT</button>
-        <span>{prevCounters}</span>
+        <button onClick={reset}>Reset</button>
+        <button onClick={removeDuplicates}>Remove Duplicates</button>
+        <ul>
+          {history}
+        </ul>
       </div>
     );
   }
@@ -26,7 +36,8 @@ class Counter extends Component {
 
 const mapStateToProps = state => {
   return {
-    counter: state.counter,
+    counter: state.counterReducer.counter,
+    prevCounters: state.counterReducer.prevCounters
   };
 };
 
@@ -37,8 +48,13 @@ const mapDispatchToProps = dispatch => {
     },
     decrement() {
       dispatch(decrement());
-
     },
+    reset() {
+      dispatch(reset());
+    },
+    removeDuplicates(){
+      dispatch(removeDuplicates());
+    }
   };
 };
 
