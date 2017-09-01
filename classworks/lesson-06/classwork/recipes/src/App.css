@@ -22,3 +22,15 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+.recipes{
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+  text-align: left;
+}
+.activeRecipe{
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+  border: 2px solid #444;
+}

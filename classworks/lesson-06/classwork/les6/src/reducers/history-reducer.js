@@ -1,20 +1,22 @@
 const historyReducer = (state = { counter: 0, prevCounters: [0] }, action) => {
   if (action.type === 'INC') {
-    state.counter += 1;
+    state = {
+      ...state,
+      counter: state.counter + 1,
+    };
   }
   if (action.type === 'DEC') {
-    state.counter -= 1;
+    state = {
+      ...state,
+      counter: state.counter - 1,
+    };
   }
 
-	const removeDuplicatesFunc = elems => {
-   let arr = [];
-   elems.forEach(elem => {
-     if (!arr.includes(elem)) {
-       arr.push(elem);
-     }
-   });
-   return arr;
- };
+  const removeDuplicates = prevCounters => {
+    return prevCounters.filter(
+      (elem, index, arr) => arr.indexOf(elem) === index,
+    );
+  };
 
   switch (action.type) {
     case 'HISTORY_UPDATE':
@@ -28,10 +30,10 @@ const historyReducer = (state = { counter: 0, prevCounters: [0] }, action) => {
         prevCounters: [],
       };
 
-		case 'REMOVE_DUPLICATES':
+    case 'REMOVE_DUPLICATES':
       return {
         ...state,
-        prevCounters: removeDuplicatesFunc(state.prevCounters),
+        prevCounters: removeDuplicates(state.prevCounters),
       };
     default:
       return state;
