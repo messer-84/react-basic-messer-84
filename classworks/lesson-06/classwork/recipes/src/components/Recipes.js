@@ -108,7 +108,7 @@ class Recipes extends Component {
       <li
         key={recipe.id}
         onClick={() => {
-          console.log(toggle);
+          console.log('comp');
           toggle();
         }}
       >
