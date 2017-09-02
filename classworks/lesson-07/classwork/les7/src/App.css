@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 70fr 30fr;
+}
+
+.book-active{
+  grid-column: 1;
+}
+
+
+.book-{
+
+}

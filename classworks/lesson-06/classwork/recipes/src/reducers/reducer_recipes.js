@@ -1,4 +1,5 @@
-const reducer = (state = { counter: 0 }, action) => {
+
+const reducer = (state = [], action) => {
   switch (action.type) {
     case 'DEC':
       return {
