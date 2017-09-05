@@ -1,8 +1,6 @@
-import React from 'react'
-import { render } from 'react-dom'
-import TestComponent from './TestComponent'
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-render(
-	<TestComponent />,
-	document.querySelector('#mount_place')
-)
+import App from './app';
+
+ReactDOM.render(<App/>, document.querySelector('#mount_place'));

@@ -1,0 +1,18 @@
+.App {
+  /*text-align: center;*/
+  display: grid;
+  padding: 100px;
+  max-width: 1000px;
+  margin: 0 auto;
+  grid-template-columns: 70fr 30fr;
+}
+
+.book-active{
+  grid-column: 1;
+}
+
+
+.book-list{
+  text-align: left;
+
+}
