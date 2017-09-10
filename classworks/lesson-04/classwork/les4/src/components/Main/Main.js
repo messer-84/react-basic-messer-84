@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Signin from '../auth/signin';
-import Signup from '../auth/signup';
-import Signout from '../auth/signout';
+import Signin from '../Auth/Signin';
+import Signup from '../Auth/Signup';
+import Signout from '../Auth/Signout';
 // import Users from '../Auth/Users';
 
 import './Main.css';

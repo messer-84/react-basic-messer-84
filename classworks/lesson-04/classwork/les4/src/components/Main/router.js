@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Signin from '../Auth/Signin';
 import Signup from '../Auth/Signup';
-import Signout from '../auth/signout';
+import Signout from '../Auth/Signout';
 // import Main from './Main';
 
 
@@ -16,9 +16,9 @@ class Main extends Component {
     return (
       <div className="main">
         <Switch>
-          <Route path="/signin" component={Signin} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/signout" component={Signout} />
+          <Route path="/Signin" component={Signin} />
+          <Route path="/Signup" component={Signup} />
+          <Route path="/Signout" component={Signout} />
           <Route path="/" component={Main} />
 
           <Route component={NotFound} />
