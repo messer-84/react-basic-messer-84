@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import './index.css';
-import AppFirst from './AppFirst';
+import Navigation from './components/Navigation';
 // import AppSecond from './AppSecond';
 
 //onready
-{ReactDOM.render(<AppFirst title="box"/>, document.getElementById('root'));}
-
-
+ReactDOM.render(
+    <Navigation />,
+  document.getElementById('root'),
+);
 
 //onclick
-// ReactDOM.render(<AppSecond title="box"/>, document.getElementById('root'));
+//ReactDOM.render(<AppSecond title="box"/>, document.getElementById('root'));

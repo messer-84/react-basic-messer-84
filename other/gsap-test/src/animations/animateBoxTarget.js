@@ -4,7 +4,7 @@ const animateBoxTarget = e => {
   const box = e.target;
 
   TweenMax.to(box, 1, {
-    yPercent: 100,
+    xPercent: 100,
     repeat: -1,
     yoyo: true,
   });
