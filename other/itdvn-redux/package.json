@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --progress --colors"
+    "dev": "webpack-dev-server --progress --colors",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "author": "Vlad Feninets <v.feninets@gmail.com>",
   "license": "ISC",
@@ -36,6 +38,8 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
-    "redux": "^3.7.2"
-  }
+    "redux": "^3.7.2",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
